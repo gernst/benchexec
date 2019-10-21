@@ -297,6 +297,14 @@ class BenchExec(object):
         )
 
         parser.add_argument(
+            "-D",
+            dest="define",
+            type=util.parse_definition,
+            action="append",
+            help="Define abbreviations to be replaced in the XML benchmark definitions",
+        )
+
+        parser.add_argument(
             "--version", action="version", version="%(prog)s " + __version__
         )
 

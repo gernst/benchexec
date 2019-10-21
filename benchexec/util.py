@@ -255,6 +255,18 @@ def parse_timespan_value(s):
         raise ValueError("unknown unit: {} (allowed are s, min, h, and d)".format(unit))
 
 
+def parse_definition(s):
+    """Parse a string that contains a key=value pair.
+    @return a tuple (key, value)
+    """
+    index = s.find("=")
+    if index >= 0:
+        key = s[0:index]
+        value = s[index+1:]
+    else:
+        raise ValueError("invalid definition: {} (required format: key=value)".format(s))
+
+
 def expand_filename_pattern(pattern, base_dir):
     """
     Expand a file name pattern containing wildcards, environment variables etc.
